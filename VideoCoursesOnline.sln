@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Admin.UI", "VCO.Admin.UI\VCO.Admin.UI.csproj", "{22A493EF-77B0-4AAA-8DC1-47E9FC0F2865}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Common", "VCO.Common\VCO.Common.csproj", "{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{22A493EF-77B0-4AAA-8DC1-47E9FC0F2865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22A493EF-77B0-4AAA-8DC1-47E9FC0F2865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22A493EF-77B0-4AAA-8DC1-47E9FC0F2865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
