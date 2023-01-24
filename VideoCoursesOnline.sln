@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Admin.UI", "VCO.Admin.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Common", "VCO.Common\VCO.Common.csproj", "{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Membership.Database", "VCO.Membership.Database\VCO.Membership.Database.csproj", "{288579F3-BB6C-4EEA-8A3E-8B402E8D043E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCO.Membership.API", "VCO.Membership.API\VCO.Membership.API.csproj", "{724EF032-9C6A-4CF2-84CE-564B88A9D53A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579C3A6F-C3FE-4EAC-A218-B1020EBF947D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{288579F3-BB6C-4EEA-8A3E-8B402E8D043E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288579F3-BB6C-4EEA-8A3E-8B402E8D043E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288579F3-BB6C-4EEA-8A3E-8B402E8D043E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288579F3-BB6C-4EEA-8A3E-8B402E8D043E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724EF032-9C6A-4CF2-84CE-564B88A9D53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724EF032-9C6A-4CF2-84CE-564B88A9D53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724EF032-9C6A-4CF2-84CE-564B88A9D53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724EF032-9C6A-4CF2-84CE-564B88A9D53A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
