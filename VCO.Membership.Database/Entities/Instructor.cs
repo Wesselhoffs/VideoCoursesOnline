@@ -11,5 +11,5 @@ public class Instructor : IEntity
     [MaxLength(1024)]
     public string Avatar { get; set; }
 
-    virtual ICollection<Course>? Courses { get; set; }
+    public virtual ICollection<Course>? Courses { get; set; }
 }
