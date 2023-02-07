@@ -80,7 +80,7 @@ namespace VCO.Membership.API.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IResult> Put(int id, [FromBody] InstructorDTO dto)
+        public async Task<IResult> Put(int id, [FromBody] SectionDTO dto)
         {
             try
             {
@@ -93,14 +93,14 @@ namespace VCO.Membership.API.Controllers
                     return Results.BadRequest("Differing ids");
                 }
 
-                var exists = await _db.AnyAsync<Instructor>(c => c.Id.Equals(id));
+                var exists = await _db.AnyAsync<Section>(c => c.Id.Equals(id));
 
                 if (exists is false)
                 {
                     return Results.NotFound("Could not find entity");
                 }
 
-                _db.Update<Instructor, InstructorDTO>(dto, dto.Id);
+                _db.Update<Section, SectionDTO>(dto, dto.Id);
 
                 var success = await _db.SaveChangesAsync();
 
@@ -122,7 +122,7 @@ namespace VCO.Membership.API.Controllers
         {
             try
             {
-                var deleted = await _db.DeleteAsync<Instructor>(id);
+                var deleted = await _db.DeleteAsync<Section>(id);
 
                 if (deleted is false)
                 {
@@ -143,7 +143,5 @@ namespace VCO.Membership.API.Controllers
                 return Results.BadRequest(ex.Message);
             }
         }
-
     }
-
 }

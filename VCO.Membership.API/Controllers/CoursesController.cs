@@ -48,13 +48,13 @@ public class CoursesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IResult> Post([FromBody] CourseCreateDTO dto)
+    public async Task<IResult> Post([FromBody] CreateCourseDTO dto)
     {
         try
         {
             if (dto == null) return Results.BadRequest();
 
-            var course = await _db.AddAsync<Course, CourseCreateDTO>(dto);
+            var course = await _db.AddAsync<Course, CreateCourseDTO>(dto);
 
             var success = await _db.SaveChangesAsync();
 
@@ -72,7 +72,7 @@ public class CoursesController : ControllerBase
 
 
     [HttpPut("{id}")]
-    public async Task<IResult> Put(int id, [FromBody] CourseEditDTO dto)
+    public async Task<IResult> Put(int id, [FromBody] EditCourseDTO dto)
     {
         try
         {
@@ -85,7 +85,7 @@ public class CoursesController : ControllerBase
             exists = await _db.AnyAsync<Course>(c => c.Id.Equals(id));
             if (!exists) return Results.NotFound("Could not find entity");
 
-            _db.Update<Course, CourseEditDTO>(dto, dto.Id);
+            _db.Update<Course, EditCourseDTO>(dto, dto.Id);
 
             var success = await _db.SaveChangesAsync();
 

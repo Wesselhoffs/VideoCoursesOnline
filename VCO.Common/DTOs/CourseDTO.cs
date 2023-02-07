@@ -13,7 +13,7 @@ public class CourseDTO
     public virtual InstructorDTO Instructor { get; set; } = new();
     public virtual List<SectionDTO> Sections { get; set; } = new();
 }
-public class CourseCreateDTO
+public class CreateCourseDTO
 {
     public string Title { get; set; }
     public string ImageUrl { get; set; }
@@ -24,7 +24,7 @@ public class CourseCreateDTO
     public int InstructorId { get; set; }
 }
 
-public class CourseEditDTO : CourseCreateDTO
+public class EditCourseDTO : CreateCourseDTO
 {
     public int Id { get; set; }
 }
