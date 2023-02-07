@@ -7,3 +7,9 @@ public class InstructorDTO
     public string Description { get; set; }
     public string Avatar { get; set; }
 }
+public class CreateInstructorDTO
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string Avatar { get; set; }
+}

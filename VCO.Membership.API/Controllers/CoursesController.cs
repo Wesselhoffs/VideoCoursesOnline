@@ -24,30 +24,99 @@ public class CoursesController : ControllerBase
             return Results.Ok(courses);
         }
         catch (Exception ex)
-        {            
+        {
             return Results.BadRequest(ex.Message);
         }
-        return Results.NotFound();
     }
-        
+
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<IResult> Get(int id)
     {
-        return "value";
+        try
+        {
+            _db.Include<Instructor>();
+            _db.Include<Section>();
+            _db.Include<Video>();
+            var course = await _db.SingleAsync<Course, CourseDTO>(c => c.Id.Equals(id));
+
+            return Results.Ok(course);
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task<IResult> Post([FromBody] CourseCreateDTO dto)
     {
+        try
+        {
+            if (dto == null) return Results.BadRequest();
+
+            var course = await _db.AddAsync<Course, CourseCreateDTO>(dto);
+
+            var success = await _db.SaveChangesAsync();
+
+            if (success == false)
+            {
+                return Results.BadRequest();
+            }
+            return Results.Created(_db.GetURI(course), course);
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 
+
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    public async Task<IResult> Put(int id, [FromBody] CourseEditDTO dto)
     {
+        try
+        {
+            if (dto is null)return Results.BadRequest("No entity provided");
+            if (!id.Equals(dto.Id)) return Results.BadRequest("Differing ids");
+
+            var exists = await _db.AnyAsync<Instructor>(i => i.Id.Equals(dto.InstructorId));
+            if (!exists) return Results.NotFound("Could not find related entity");
+
+            exists = await _db.AnyAsync<Course>(c => c.Id.Equals(id));
+            if (!exists) return Results.NotFound("Could not find entity");
+
+            _db.Update<Course, CourseEditDTO>(dto, dto.Id);
+
+            var success = await _db.SaveChangesAsync();
+
+            if (!success) return Results.BadRequest();
+
+            return Results.NoContent();
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task<IResult> Delete(int id)
     {
+        try
+        {
+            var success = await _db.DeleteAsync<Course>(id);
+
+            if (!success) return Results.NotFound();
+
+            success = await _db.SaveChangesAsync();
+
+            if (!success) return Results.BadRequest();
+
+            return Results.NoContent();
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 }

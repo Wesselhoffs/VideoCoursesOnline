@@ -43,11 +43,19 @@ void ConfigureAutoMapper()
     var config = new AutoMapper.MapperConfiguration(cfg =>
     {
         cfg.CreateMap<Video, VideoDTO>().ReverseMap();
+
         cfg.CreateMap<Instructor, InstructorDTO>().ReverseMap().ForMember(dest => dest.Courses, src => src.Ignore());
+        cfg.CreateMap<CreateInstructorDTO, Instructor>().ForMember(dest => dest.Courses, src => src.Ignore());
+
         cfg.CreateMap<Course, CourseDTO>().ReverseMap().ForMember(dest => dest.Instructor, src => src.Ignore());
+        cfg.CreateMap<CourseEditDTO, Course>();
+        cfg.CreateMap<CourseCreateDTO, Course>();
+
         cfg.CreateMap<Section, SectionDTO>().ForMember(dest => dest.Course, src => src.MapFrom(s => s.Course.Title))
                                             .ReverseMap()
                                             .ForMember(dest => dest.Course, src => src.Ignore());
+        cfg.CreateMap<CreateSectionDTO, Section>();
+        cfg.CreateMap<EditSectionDTO, Section>();
     });
     var mapper = config.CreateMapper();
     builder.Services.AddSingleton(mapper);
