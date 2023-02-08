@@ -2,7 +2,7 @@
 
 public class MembershipHttpClient
 {
-    private readonly HttpClient Client; 
+    public readonly HttpClient Client; 
 
     public MembershipHttpClient(HttpClient client)
 	{

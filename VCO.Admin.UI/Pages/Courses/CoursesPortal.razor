@@ -1,5 +1,43 @@
-﻿<h3>CoursesPortal</h3>
+﻿@inject IAdminService AdminService
+
+
+@if (!String.IsNullOrWhiteSpace(Alert))
+{
+	<div class="d-flex">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>@Alert</strong>
+			<button type="button" @onclick="CloseAlert" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+}
+
+<button type="button" @onclick="SetAlert" class="btn btn-outline-primary">SET ALERT</button>
+
+
 
 @code {
+	List<CourseDTO> Model { get; set; } = new();
+	public string Alert { get; set; } = "";
+	public string Navigation { get; set; } = PageType.Index;
+
+	public void ChangePageType(string pageType)
+	{
+		Navigation = pageType;
+	}
+
+	public void SetAlert()
+	{
+		Alert = "TEST ALERT MESSAGE, Test alert message";
+	}
+	public void CloseAlert()
+	{
+		Alert = "";
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		Alert = "";
+		Model = await AdminService.GetAsync<CourseDTO>("courses?freeOnly=false");
+	}
 
 }

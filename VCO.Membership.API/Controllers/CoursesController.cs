@@ -96,7 +96,7 @@ public class CoursesController : ControllerBase
         catch (Exception ex)
         {
             return Results.BadRequest(ex.Message);
-        }
+		}
     }
 
     [HttpDelete("{id}")]
